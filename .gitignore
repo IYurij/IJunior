@@ -70,3 +70,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+IJunior/Assets/SampleScenes.meta
+IJunior/Assets/Standard Assets/Effects/ToonShading/Shaders/ToonBasic.shader.meta

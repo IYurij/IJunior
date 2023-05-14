@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnControlelr : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _spawners;
-    [SerializeField] private GameObject _enemyTemplate;
+    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private EnemyTemplate _enemyTemplate;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(Spawn());
     }
@@ -19,10 +19,10 @@ public class SpawnControlelr : MonoBehaviour
 
         while (true)
         {
-            if (i > 2)
+            if (i > _spawnPoints.Length - 1)
                 i = 0;
 
-            DoSpawn(_spawners[i]);
+            DoSpawn(_spawnPoints[i]);
 
             i++;
 
@@ -30,12 +30,12 @@ public class SpawnControlelr : MonoBehaviour
         }
     }
 
-    private void DoSpawn(GameObject spawner)
+    private void DoSpawn(Transform spawner)
     {
         float rand = Random.Range(-0.05f, 0.06f);
-        float positionX = spawner.transform.position.x + rand;
-        float positionY = spawner.transform.position.y + 2f;
-        float positionZ = spawner.transform.position.z + rand;
+        float positionX = spawner.position.x + rand;
+        float positionY = spawner.position.y + 2f;
+        float positionZ = spawner.position.z + rand;
 
         Instantiate(_enemyTemplate, new Vector3(positionX, positionY, positionZ), Quaternion.identity);
     }
